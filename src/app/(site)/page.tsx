@@ -6,6 +6,9 @@ import {
   getFeaturedProducts,
 } from "@/lib/data/catalog";
 import { ProductCard } from "@/components/site/product-card";
+import { Marquee } from "@/components/ui/marquee";
+import { Reveal } from "@/components/ui/reveal";
+import { HeroCta } from "@/components/site/hero-cta";
 
 export default async function HomePage() {
   const [banners, categories, featured] = await Promise.all([
@@ -15,84 +18,105 @@ export default async function HomePage() {
   ]);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      {banners.length > 0 ? (
-        <div className="mb-10 grid gap-4 sm:grid-cols-2">
-          {banners.map((banner) => (
-            <Link
-              key={banner.id}
-              href={banner.link || "/produtos"}
-              className="relative block aspect-[16/7] overflow-hidden rounded-xl bg-slate-100"
-            >
-              <Image
-                src={banner.imageUrl}
-                alt={banner.title || "Banner"}
-                fill
-                className="object-cover"
-              />
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="mb-10 rounded-xl bg-slate-900 px-8 py-16 text-center text-white">
-          <h1 className="text-3xl font-bold sm:text-4xl">
-            Bem-vindo(a) à nossa loja
-          </h1>
-          <p className="mt-3 text-slate-300">
-            Os melhores produtos, com entrega para todo o Brasil.
-          </p>
-          <Link
-            href="/produtos"
-            className="mt-6 inline-block rounded-md bg-white px-6 py-3 font-semibold text-slate-900"
-          >
-            Ver produtos
-          </Link>
-        </div>
-      )}
+    <div>
+      <section className="relative overflow-hidden px-4 pb-16 pt-20 sm:pt-28">
+        <div className="pointer-events-none absolute -left-32 -top-32 h-96 w-96 animate-blob rounded-full bg-accent/20 blur-[100px]" />
+        <div className="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 animate-blob rounded-full bg-accent/10 blur-[100px] [animation-delay:6s]" />
 
-      {categories.length > 0 && (
-        <section className="mb-12">
-          <h2 className="mb-4 text-xl font-bold text-slate-900">Categorias</h2>
-          <div className="flex flex-wrap gap-3">
-            {categories.map((cat) => (
+        <div className="relative mx-auto max-w-6xl text-center">
+          <span className="mb-6 inline-block rounded-full border border-border px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-muted">
+            Bem-vindo(a)
+          </span>
+          <h1 className="font-[family-name:var(--font-display)] text-5xl font-bold leading-[0.95] tracking-tight text-foreground sm:text-7xl">
+            Produtos que
+            <br />
+            <span className="text-accent">fazem sentido</span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-md text-base text-foreground/60">
+            Curadoria, qualidade e entrega para todo o Brasil. Sem enrolação.
+          </p>
+          <div className="mt-9 flex justify-center">
+            <HeroCta />
+          </div>
+        </div>
+      </section>
+
+      {banners.length > 0 && (
+        <div className="mx-auto mb-16 max-w-6xl px-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {banners.map((banner) => (
               <Link
-                key={cat.id}
-                href={`/produtos?categoria=${cat.slug}`}
-                className="rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-900 hover:text-slate-900"
+                key={banner.id}
+                href={banner.link || "/produtos"}
+                className="relative block aspect-[16/7] overflow-hidden rounded-2xl border border-border bg-surface"
               >
-                {cat.name}
+                <Image src={banner.imageUrl} alt={banner.title || "Banner"} fill className="object-cover" />
               </Link>
             ))}
           </div>
-        </section>
+        </div>
       )}
 
-      <section>
-        <div className="mb-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold text-slate-900">Destaques</h2>
-          <Link href="/produtos" className="text-sm font-medium text-slate-600 hover:text-slate-900">
-            Ver todos →
-          </Link>
-        </div>
-        {featured.length === 0 ? (
-          <p className="text-slate-500">
-            Nenhum produto cadastrado ainda. Acesse o painel administrativo para começar a montar seu catálogo.
-          </p>
-        ) : (
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
-            {featured.map((p) => (
-              <ProductCard
-                key={p.id}
-                slug={p.slug}
-                name={p.name}
-                priceCents={p.priceCents}
-                compareCents={p.compareCents}
-                imageUrl={p.images[0]}
-              />
-            ))}
-          </div>
+      <Marquee
+        items={[
+          "ENTREGA PARA TODO O BRASIL",
+          "PAGAMENTO SEGURO",
+          "TROCA FÁCIL",
+          "SUPORTE DEDICADO",
+        ]}
+      />
+
+      <div className="mx-auto max-w-6xl px-4 py-16">
+        {categories.length > 0 && (
+          <Reveal className="mb-16">
+            <h2 className="mb-5 font-[family-name:var(--font-display)] text-2xl font-bold text-foreground">
+              Categorias
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {categories.map((cat) => (
+                <Link
+                  key={cat.id}
+                  href={`/produtos?categoria=${cat.slug}`}
+                  className="rounded-full border border-border px-5 py-2.5 text-sm font-medium text-foreground/80 transition-colors hover:border-accent hover:text-accent"
+                >
+                  {cat.name}
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         )}
-      </section>
+
+        <Reveal>
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold text-foreground">
+              Destaques
+            </h2>
+            <Link href="/produtos" className="text-sm font-medium text-muted hover:text-accent">
+              Ver todos →
+            </Link>
+          </div>
+          {featured.length === 0 ? (
+            <p className="rounded-2xl border border-dashed border-border p-10 text-center text-muted">
+              Nenhum produto cadastrado ainda. Acesse o painel administrativo para começar a
+              montar seu catálogo.
+            </p>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
+              {featured.map((p, i) => (
+                <Reveal key={p.id} delay={i * 0.05}>
+                  <ProductCard
+                    slug={p.slug}
+                    name={p.name}
+                    priceCents={p.priceCents}
+                    compareCents={p.compareCents}
+                    imageUrl={p.images[0]}
+                  />
+                </Reveal>
+              ))}
+            </div>
+          )}
+        </Reveal>
+      </div>
     </div>
   );
 }

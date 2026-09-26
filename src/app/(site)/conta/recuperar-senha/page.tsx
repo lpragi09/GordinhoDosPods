@@ -14,10 +14,10 @@ export default function RequestPasswordResetPage() {
 
   return (
     <div className="mx-auto flex max-w-md flex-col px-4 py-12">
-      <h1 className="mb-2 text-2xl font-bold text-slate-900">
+      <h1 className="mb-2 text-2xl font-bold text-foreground">
         Recuperar senha
       </h1>
-      <p className="mb-6 text-sm text-slate-500">
+      <p className="mb-6 text-sm text-muted">
         Informe seu e-mail e enviaremos um link para redefinir sua senha.
       </p>
 
@@ -29,20 +29,20 @@ export default function RequestPasswordResetPage() {
       ) : (
         <form action={formAction} className="flex flex-col gap-4">
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">
+            <label className="mb-1 block text-sm font-medium text-foreground/80">
               E-mail
             </label>
             <input
               type="email"
               name="email"
               required
-              className="w-full rounded-md border border-slate-300 px-3 py-2"
+              className="w-full rounded-md border border-border px-3 py-2"
             />
           </div>
           <button
             type="submit"
             disabled={pending}
-            className="rounded-md bg-slate-900 px-4 py-3 font-semibold text-white disabled:opacity-60"
+            className="rounded-md bg-accent px-4 py-3 font-semibold text-accent-foreground disabled:opacity-60"
           >
             {pending ? "Enviando..." : "Enviar link de redefinição"}
           </button>
@@ -51,7 +51,7 @@ export default function RequestPasswordResetPage() {
 
       <Link
         href="/conta/entrar"
-        className="mt-6 text-center text-sm text-slate-600 hover:underline"
+        className="mt-6 text-center text-sm text-foreground/60 hover:underline"
       >
         Voltar para o login
       </Link>

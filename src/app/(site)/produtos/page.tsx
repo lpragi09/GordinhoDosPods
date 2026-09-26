@@ -17,7 +17,7 @@ export default async function ProductsPage({
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">Produtos</h1>
+      <h1 className="mb-6 text-2xl font-bold text-foreground">Produtos</h1>
 
       <div className="flex flex-col gap-8 md:flex-row">
         <aside className="w-full shrink-0 md:w-56">
@@ -27,11 +27,11 @@ export default async function ProductsPage({
               name="busca"
               defaultValue={busca}
               placeholder="Buscar produtos..."
-              className="w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+              className="w-full rounded-md border border-border px-3 py-2 text-sm"
             />
           </form>
 
-          <h2 className="mb-2 text-sm font-semibold text-slate-900">
+          <h2 className="mb-2 text-sm font-semibold text-foreground">
             Categorias
           </h2>
           <ul className="space-y-1 text-sm">
@@ -39,7 +39,7 @@ export default async function ProductsPage({
               <Link
                 href="/produtos"
                 className={`block rounded px-2 py-1 ${
-                  !categoria ? "bg-slate-900 text-white" : "text-slate-600 hover:bg-slate-100"
+                  !categoria ? "bg-accent text-accent-foreground" : "text-foreground/60 hover:bg-surface/5"
                 }`}
               >
                 Todas
@@ -51,8 +51,8 @@ export default async function ProductsPage({
                   href={`/produtos?categoria=${cat.slug}`}
                   className={`block rounded px-2 py-1 ${
                     categoria === cat.slug
-                      ? "bg-slate-900 text-white"
-                      : "text-slate-600 hover:bg-slate-100"
+                      ? "bg-accent text-accent-foreground"
+                      : "text-foreground/60 hover:bg-surface/5"
                   }`}
                 >
                   {cat.name}
@@ -64,7 +64,7 @@ export default async function ProductsPage({
 
         <div className="flex-1">
           {result.items.length === 0 ? (
-            <p className="text-slate-500">Nenhum produto encontrado.</p>
+            <p className="text-muted">Nenhum produto encontrado.</p>
           ) : (
             <>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -96,8 +96,8 @@ export default async function ProductsPage({
                         }}
                         className={`h-9 w-9 rounded-md text-center text-sm leading-9 ${
                           p === page
-                            ? "bg-slate-900 text-white"
-                            : "border border-slate-300 text-slate-700"
+                            ? "bg-accent text-accent-foreground"
+                            : "border border-border text-foreground/80"
                         }`}
                       >
                         {p}

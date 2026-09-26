@@ -73,19 +73,19 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
       )}
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">
+        <label className="mb-1 block text-sm font-medium text-foreground/80">
           Identificação (ex: Casa, Trabalho)
         </label>
         <input
           type="text"
           name="label"
           defaultValue={initial?.label || "Principal"}
-          className="w-full rounded-md border border-slate-300 px-3 py-2"
+          className="w-full rounded-md border border-border px-3 py-2"
         />
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">
+        <label className="mb-1 block text-sm font-medium text-foreground/80">
           Nome do destinatário
         </label>
         <input
@@ -93,7 +93,7 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
           name="recipient"
           defaultValue={initial?.recipient}
           required
-          className="w-full rounded-md border border-slate-300 px-3 py-2"
+          className="w-full rounded-md border border-border px-3 py-2"
         />
         {state.fieldErrors?.recipient && (
           <p className="mt-1 text-xs text-red-600">{state.fieldErrors.recipient}</p>
@@ -102,7 +102,7 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-slate-700">
+          <label className="mb-1 block text-sm font-medium text-foreground/80">
             CEP
           </label>
           <input
@@ -114,16 +114,16 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
             required
             maxLength={9}
             placeholder="00000-000"
-            className="w-full rounded-md border border-slate-300 px-3 py-2"
+            className="w-full rounded-md border border-border px-3 py-2"
           />
-          {cepLoading && <p className="mt-1 text-xs text-slate-400">Buscando...</p>}
+          {cepLoading && <p className="mt-1 text-xs text-muted">Buscando...</p>}
           {cepError && <p className="mt-1 text-xs text-red-600">{cepError}</p>}
           {state.fieldErrors?.cep && (
             <p className="mt-1 text-xs text-red-600">{state.fieldErrors.cep}</p>
           )}
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-slate-700">
+          <label className="mb-1 block text-sm font-medium text-foreground/80">
             UF
           </label>
           <input
@@ -135,13 +135,13 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
             }
             required
             maxLength={2}
-            className="w-full rounded-md border border-slate-300 px-3 py-2 uppercase"
+            className="w-full rounded-md border border-border px-3 py-2 uppercase"
           />
         </div>
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">
+        <label className="mb-1 block text-sm font-medium text-foreground/80">
           Rua
         </label>
         <input
@@ -150,13 +150,13 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
           value={fields.street}
           onChange={(e) => setFields((f) => ({ ...f, street: e.target.value }))}
           required
-          className="w-full rounded-md border border-slate-300 px-3 py-2"
+          className="w-full rounded-md border border-border px-3 py-2"
         />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="mb-1 block text-sm font-medium text-slate-700">
+          <label className="mb-1 block text-sm font-medium text-foreground/80">
             Número
           </label>
           <input
@@ -164,24 +164,24 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
             name="number"
             defaultValue={initial?.number}
             required
-            className="w-full rounded-md border border-slate-300 px-3 py-2"
+            className="w-full rounded-md border border-border px-3 py-2"
           />
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-slate-700">
+          <label className="mb-1 block text-sm font-medium text-foreground/80">
             Complemento
           </label>
           <input
             type="text"
             name="complement"
             defaultValue={initial?.complement}
-            className="w-full rounded-md border border-slate-300 px-3 py-2"
+            className="w-full rounded-md border border-border px-3 py-2"
           />
         </div>
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">
+        <label className="mb-1 block text-sm font-medium text-foreground/80">
           Bairro
         </label>
         <input
@@ -192,12 +192,12 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
             setFields((f) => ({ ...f, neighborhood: e.target.value }))
           }
           required
-          className="w-full rounded-md border border-slate-300 px-3 py-2"
+          className="w-full rounded-md border border-border px-3 py-2"
         />
       </div>
 
       <div>
-        <label className="mb-1 block text-sm font-medium text-slate-700">
+        <label className="mb-1 block text-sm font-medium text-foreground/80">
           Cidade
         </label>
         <input
@@ -206,11 +206,11 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
           value={fields.city}
           onChange={(e) => setFields((f) => ({ ...f, city: e.target.value }))}
           required
-          className="w-full rounded-md border border-slate-300 px-3 py-2"
+          className="w-full rounded-md border border-border px-3 py-2"
         />
       </div>
 
-      <label className="flex items-center gap-2 text-sm text-slate-700">
+      <label className="flex items-center gap-2 text-sm text-foreground/80">
         <input
           type="checkbox"
           name="isDefault"
@@ -222,7 +222,7 @@ export function AddressForm({ initial }: { initial?: AddressFormValues }) {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-md bg-slate-900 px-4 py-3 font-semibold text-white disabled:opacity-60"
+        className="rounded-md bg-accent px-4 py-3 font-semibold text-accent-foreground disabled:opacity-60"
       >
         {pending ? "Salvando..." : "Salvar endereço"}
       </button>

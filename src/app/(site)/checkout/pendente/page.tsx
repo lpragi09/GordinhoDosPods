@@ -11,10 +11,10 @@ export default async function CheckoutPendingPage({
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
       <Clock className="mx-auto mb-4 text-amber-500" size={56} />
-      <h1 className="mb-2 text-2xl font-bold text-slate-900">
+      <h1 className="mb-2 text-2xl font-bold text-foreground">
         Pagamento pendente
       </h1>
-      <p className="mb-8 text-slate-600">
+      <p className="mb-8 text-foreground/60">
         Seu pagamento está sendo processado (comum em boletos e PIX com
         compensação). Você será avisado por e-mail assim que for aprovado.
       </p>
@@ -22,14 +22,14 @@ export default async function CheckoutPendingPage({
         {order && (
           <Link
             href={`/conta/pedidos/${order}`}
-            className="rounded-md bg-slate-900 px-6 py-3 font-semibold text-white"
+            className="rounded-md bg-accent px-6 py-3 font-semibold text-accent-foreground"
           >
             Ver meu pedido
           </Link>
         )}
         <Link
           href="/produtos"
-          className="rounded-md border border-slate-300 px-6 py-3 font-semibold text-slate-700"
+          className="rounded-md border border-border px-6 py-3 font-semibold text-foreground/80"
         >
           Continuar comprando
         </Link>

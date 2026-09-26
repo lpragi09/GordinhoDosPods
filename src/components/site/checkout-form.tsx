@@ -37,11 +37,11 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
 
   if (items.length === 0) {
     return (
-      <div className="rounded-lg border border-dashed border-slate-300 p-10 text-center">
-        <p className="mb-4 text-slate-500">Seu carrinho está vazio.</p>
+      <div className="rounded-lg border border-dashed border-border p-10 text-center">
+        <p className="mb-4 text-muted">Seu carrinho está vazio.</p>
         <Link
           href="/produtos"
-          className="inline-block rounded-md bg-slate-900 px-6 py-3 font-semibold text-white"
+          className="inline-block rounded-md bg-accent px-6 py-3 font-semibold text-accent-foreground"
         >
           Ver produtos
         </Link>
@@ -78,17 +78,17 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
       <div className="space-y-6 md:col-span-2">
         <div>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="font-semibold text-slate-900">Endereço de entrega</h2>
+            <h2 className="font-semibold text-foreground">Endereço de entrega</h2>
             <Link
               href="/conta/enderecos/novo"
-              className="text-sm font-medium text-slate-600 hover:underline"
+              className="text-sm font-medium text-foreground/60 hover:underline"
             >
               + Novo endereço
             </Link>
           </div>
 
           {addresses.length === 0 ? (
-            <p className="rounded-md border border-dashed border-slate-300 p-4 text-sm text-slate-500">
+            <p className="rounded-md border border-dashed border-border p-4 text-sm text-muted">
               Você ainda não tem endereços cadastrados.{" "}
               <Link href="/conta/enderecos/novo" className="font-semibold underline">
                 Cadastrar endereço
@@ -101,8 +101,8 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
                   key={addr.id}
                   className={`flex cursor-pointer gap-3 rounded-lg border p-4 ${
                     addressId === addr.id
-                      ? "border-slate-900 bg-slate-50"
-                      : "border-slate-200"
+                      ? "border-accent bg-surface"
+                      : "border-border"
                   }`}
                 >
                   <input
@@ -113,8 +113,8 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
                     className="mt-1"
                   />
                   <div className="text-sm">
-                    <p className="font-semibold text-slate-900">{addr.label}</p>
-                    <p className="text-slate-600">
+                    <p className="font-semibold text-foreground">{addr.label}</p>
+                    <p className="text-foreground/60">
                       {addr.recipient} · {addr.street}, {addr.number}
                       {addr.complement ? ` - ${addr.complement}` : ""}
                       <br />
@@ -129,19 +129,19 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
         </div>
 
         <div>
-          <h2 className="mb-3 font-semibold text-slate-900">Cupom de desconto</h2>
+          <h2 className="mb-3 font-semibold text-foreground">Cupom de desconto</h2>
           <input
             type="text"
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
             placeholder="Código do cupom (opcional)"
-            className="w-full max-w-xs rounded-md border border-slate-300 px-3 py-2 text-sm"
+            className="w-full max-w-xs rounded-md border border-border px-3 py-2 text-sm"
           />
         </div>
       </div>
 
-      <div className="h-fit rounded-lg border border-slate-200 p-5">
-        <h2 className="mb-3 font-semibold text-slate-900">Resumo</h2>
+      <div className="h-fit rounded-lg border border-border p-5">
+        <h2 className="mb-3 font-semibold text-foreground">Resumo</h2>
         <div className="space-y-1 divide-y divide-slate-100 text-sm">
           {items.map((item) => (
             <div key={item.productId} className="flex justify-between py-2">
@@ -152,11 +152,11 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
             </div>
           ))}
         </div>
-        <div className="mt-3 flex justify-between border-t border-slate-200 pt-3 text-sm text-slate-500">
+        <div className="mt-3 flex justify-between border-t border-border pt-3 text-sm text-muted">
           <span>Subtotal</span>
           <span>{formatCurrency(subtotal)}</span>
         </div>
-        <p className="mb-3 text-xs text-slate-400">
+        <p className="mb-3 text-xs text-muted">
           Frete e descontos calculados na próxima etapa.
         </p>
 
@@ -169,7 +169,7 @@ export function CheckoutForm({ addresses }: { addresses: AddressOption[] }) {
         <button
           onClick={handleSubmit}
           disabled={loading || addresses.length === 0}
-          className="w-full rounded-md bg-slate-900 px-4 py-3 font-semibold text-white disabled:opacity-60"
+          className="w-full rounded-md bg-accent px-4 py-3 font-semibold text-accent-foreground disabled:opacity-60"
         >
           {loading ? "Redirecionando..." : "Pagar com Mercado Pago"}
         </button>

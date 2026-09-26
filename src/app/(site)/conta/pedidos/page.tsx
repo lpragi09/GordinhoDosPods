@@ -14,7 +14,7 @@ export default async function OrdersPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">Minha conta</h1>
+      <h1 className="mb-6 text-2xl font-bold text-foreground">Minha conta</h1>
 
       <div className="flex flex-col gap-8 md:flex-row">
         <div className="md:w-56">
@@ -22,21 +22,21 @@ export default async function OrdersPage() {
         </div>
 
         <div className="flex-1">
-          <h2 className="mb-4 font-semibold text-slate-900">Meus pedidos</h2>
+          <h2 className="mb-4 font-semibold text-foreground">Meus pedidos</h2>
 
           {orders.length === 0 ? (
-            <p className="text-slate-500">Você ainda não fez nenhum pedido.</p>
+            <p className="text-muted">Você ainda não fez nenhum pedido.</p>
           ) : (
             <div className="space-y-3">
               {orders.map((order) => (
                 <Link
                   key={order.id}
                   href={`/conta/pedidos/${order.id}`}
-                  className="flex flex-col gap-2 rounded-lg border border-slate-200 p-4 hover:border-slate-400 sm:flex-row sm:items-center sm:justify-between"
+                  className="flex flex-col gap-2 rounded-lg border border-border p-4 hover:border-accent/50 sm:flex-row sm:items-center sm:justify-between"
                 >
                   <div>
-                    <p className="font-semibold text-slate-900">{order.code}</p>
-                    <p className="text-xs text-slate-500">
+                    <p className="font-semibold text-foreground">{order.code}</p>
+                    <p className="text-xs text-muted">
                       {order.createdAt.toLocaleDateString("pt-BR")} ·{" "}
                       {order.items.length} item(ns)
                     </p>
@@ -47,7 +47,7 @@ export default async function OrdersPage() {
                     >
                       {statusLabel(order.status)}
                     </span>
-                    <span className="font-semibold text-slate-900">
+                    <span className="font-semibold text-foreground">
                       {formatCurrency(order.totalCents)}
                     </span>
                   </div>

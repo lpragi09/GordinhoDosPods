@@ -17,7 +17,7 @@ export default async function ProductPage({
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
       <div className="grid gap-10 md:grid-cols-2">
-        <div className="relative aspect-square overflow-hidden rounded-xl bg-slate-100">
+        <div className="relative aspect-square overflow-hidden rounded-xl bg-surface/5">
           {product.images[0] ? (
             <Image
               src={product.images[0]}
@@ -35,26 +35,26 @@ export default async function ProductPage({
 
         <div>
           {product.category && (
-            <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+            <span className="text-xs font-semibold uppercase tracking-wide text-muted">
               {product.category.name}
             </span>
           )}
-          <h1 className="mt-1 text-2xl font-bold text-slate-900">
+          <h1 className="mt-1 text-2xl font-bold text-foreground">
             {product.name}
           </h1>
 
           <div className="mt-4 flex items-baseline gap-3">
-            <span className="text-3xl font-bold text-slate-900">
+            <span className="text-3xl font-bold text-foreground">
               {formatCurrency(product.priceCents)}
             </span>
             {product.compareCents && product.compareCents > product.priceCents && (
-              <span className="text-lg text-slate-400 line-through">
+              <span className="text-lg text-muted line-through">
                 {formatCurrency(product.compareCents)}
               </span>
             )}
           </div>
 
-          <p className="mt-6 whitespace-pre-line text-slate-600">
+          <p className="mt-6 whitespace-pre-line text-foreground/60">
             {product.description}
           </p>
 
@@ -76,7 +76,7 @@ export default async function ProductPage({
           {product.images.slice(1).map((img, idx) => (
             <div
               key={idx}
-              className="relative aspect-square overflow-hidden rounded-md bg-slate-100"
+              className="relative aspect-square overflow-hidden rounded-md bg-surface/5"
             >
               <Image src={img} alt={product.name} fill className="object-cover" />
             </div>

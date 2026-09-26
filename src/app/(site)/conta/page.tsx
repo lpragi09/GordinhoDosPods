@@ -16,7 +16,7 @@ export default async function AccountOverviewPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">Minha conta</h1>
+      <h1 className="mb-6 text-2xl font-bold text-foreground">Minha conta</h1>
 
       <div className="flex flex-col gap-8 md:flex-row">
         <div className="md:w-56">
@@ -24,27 +24,27 @@ export default async function AccountOverviewPage() {
         </div>
 
         <div className="flex-1 space-y-6">
-          <div className="rounded-lg border border-slate-200 p-5">
-            <h2 className="mb-3 font-semibold text-slate-900">Meus dados</h2>
-            <p className="text-sm text-slate-600">{user?.name}</p>
-            <p className="text-sm text-slate-600">{user?.email}</p>
-            {user?.phone && <p className="text-sm text-slate-600">{user.phone}</p>}
+          <div className="rounded-lg border border-border p-5">
+            <h2 className="mb-3 font-semibold text-foreground">Meus dados</h2>
+            <p className="text-sm text-foreground/60">{user?.name}</p>
+            <p className="text-sm text-foreground/60">{user?.email}</p>
+            {user?.phone && <p className="text-sm text-foreground/60">{user.phone}</p>}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
             <Link
               href="/conta/pedidos"
-              className="rounded-lg border border-slate-200 p-5 hover:border-slate-400"
+              className="rounded-lg border border-border p-5 hover:border-accent/50"
             >
-              <p className="text-2xl font-bold text-slate-900">{orderCount}</p>
-              <p className="text-sm text-slate-500">Pedidos realizados</p>
+              <p className="text-2xl font-bold text-foreground">{orderCount}</p>
+              <p className="text-sm text-muted">Pedidos realizados</p>
             </Link>
             <Link
               href="/conta/enderecos"
-              className="rounded-lg border border-slate-200 p-5 hover:border-slate-400"
+              className="rounded-lg border border-border p-5 hover:border-accent/50"
             >
-              <p className="text-2xl font-bold text-slate-900">{addressCount}</p>
-              <p className="text-sm text-slate-500">Endereços cadastrados</p>
+              <p className="text-2xl font-bold text-foreground">{addressCount}</p>
+              <p className="text-sm text-muted">Endereços cadastrados</p>
             </Link>
           </div>
         </div>

@@ -19,7 +19,7 @@ export default function ResetPasswordPage({
 
   return (
     <div className="mx-auto flex max-w-md flex-col px-4 py-12">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">
+      <h1 className="mb-6 text-2xl font-bold text-foreground">
         Definir nova senha
       </h1>
 
@@ -30,7 +30,7 @@ export default function ResetPasswordPage({
           </p>
           <Link
             href="/conta/entrar"
-            className="rounded-md bg-slate-900 px-4 py-3 text-center font-semibold text-white"
+            className="rounded-md bg-accent px-4 py-3 text-center font-semibold text-accent-foreground"
           >
             Entrar
           </Link>
@@ -46,7 +46,7 @@ export default function ResetPasswordPage({
           )}
 
           <div>
-            <label className="mb-1 block text-sm font-medium text-slate-700">
+            <label className="mb-1 block text-sm font-medium text-foreground/80">
               Nova senha
             </label>
             <input
@@ -54,14 +54,14 @@ export default function ResetPasswordPage({
               name="password"
               required
               minLength={6}
-              className="w-full rounded-md border border-slate-300 px-3 py-2"
+              className="w-full rounded-md border border-border px-3 py-2"
             />
           </div>
 
           <button
             type="submit"
             disabled={pending}
-            className="rounded-md bg-slate-900 px-4 py-3 font-semibold text-white disabled:opacity-60"
+            className="rounded-md bg-accent px-4 py-3 font-semibold text-accent-foreground disabled:opacity-60"
           >
             {pending ? "Salvando..." : "Salvar nova senha"}
           </button>

@@ -20,7 +20,7 @@ export default async function EditAddressPage({
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-8">
-      <h1 className="mb-6 text-2xl font-bold text-slate-900">Minha conta</h1>
+      <h1 className="mb-6 text-2xl font-bold text-foreground">Minha conta</h1>
 
       <div className="flex flex-col gap-8 md:flex-row">
         <div className="md:w-56">
@@ -28,7 +28,7 @@ export default async function EditAddressPage({
         </div>
 
         <div className="max-w-lg flex-1">
-          <h2 className="mb-4 font-semibold text-slate-900">Editar endereço</h2>
+          <h2 className="mb-4 font-semibold text-foreground">Editar endereço</h2>
           <AddressForm
             initial={{
               id: address.id,

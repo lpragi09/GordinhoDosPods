@@ -28,7 +28,7 @@ export function AddToCart({
 
   if (stock <= 0) {
     return (
-      <div className="rounded-md bg-slate-100 px-4 py-3 text-sm font-medium text-slate-500">
+      <div className="rounded-md bg-surface/5 px-4 py-3 text-sm font-medium text-muted">
         Produto indisponível no momento
       </div>
     );
@@ -37,8 +37,8 @@ export function AddToCart({
   return (
     <div className="flex flex-col gap-3">
       <div className="flex items-center gap-3">
-        <label className="text-sm font-medium text-slate-700">Quantidade</label>
-        <div className="flex items-center rounded-md border border-slate-300">
+        <label className="text-sm font-medium text-foreground/80">Quantidade</label>
+        <div className="flex items-center rounded-md border border-border">
           <button
             type="button"
             className="px-3 py-1 text-lg"
@@ -55,7 +55,7 @@ export function AddToCart({
             +
           </button>
         </div>
-        <span className="text-xs text-slate-500">{stock} em estoque</span>
+        <span className="text-xs text-muted">{stock} em estoque</span>
       </div>
 
       <div className="flex gap-3">
@@ -69,7 +69,7 @@ export function AddToCart({
             setAdded(true);
             setTimeout(() => setAdded(false), 2000);
           }}
-          className="flex-1 rounded-md bg-slate-900 px-6 py-3 font-semibold text-white hover:bg-slate-800"
+          className="flex-1 rounded-md bg-accent px-6 py-3 font-semibold text-accent-foreground hover:opacity-90"
         >
           {added ? "Adicionado!" : "Adicionar ao carrinho"}
         </button>
@@ -82,7 +82,7 @@ export function AddToCart({
             );
             router.push("/carrinho");
           }}
-          className="flex-1 rounded-md border border-slate-900 px-6 py-3 font-semibold text-slate-900 hover:bg-slate-100"
+          className="flex-1 rounded-md border border-accent px-6 py-3 font-semibold text-foreground hover:bg-surface/5"
         >
           Comprar agora
         </button>
