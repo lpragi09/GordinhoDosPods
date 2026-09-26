@@ -35,6 +35,20 @@ Auth.js, Mercado Pago e envio de e-mails transacionais.
 
 ## Rodando localmente
 
+### Sobre `DATABASE_URL` e `DIRECT_URL`
+
+Provedores como **Neon** e **Supabase** oferecem uma conexão "pooled" (com
+`-pooler` no host, usada em produção pela aplicação) e uma conexão **direta**
+(sem pooler). O Prisma precisa da conexão **direta** para rodar migrações —
+usar a pooled trava com o erro `P1002` (timeout ao adquirir advisory lock).
+
+- `DATABASE_URL`: conexão pooled (a que a aplicação usa em runtime).
+- `DIRECT_URL`: conexão direta (usada só por `prisma migrate`/`prisma db seed`).
+
+No Neon, pegue as duas em **Connect** → aba "Pooled connection" (liga) e
+"Pooled connection" (desliga) — ou simplesmente remova o `-pooler` do host
+da connection string pooled para obter a direta.
+
 ### 1. Pré-requisitos
 
 - Node.js 20+
