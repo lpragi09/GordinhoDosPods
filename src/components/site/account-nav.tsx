@@ -8,15 +8,15 @@ const links = [
 
 export function AccountNav({ current }: { current: string }) {
   return (
-    <nav className="flex gap-2 overflow-x-auto border-b border-slate-200 pb-3 md:flex-col md:border-b-0 md:pb-0">
+    <nav className="flex gap-2 overflow-x-auto border-b border-border pb-3 md:flex-col md:border-b-0 md:pb-0">
       {links.map((link) => (
         <Link
           key={link.href}
           href={link.href}
           className={`whitespace-nowrap rounded-md px-3 py-2 text-sm font-medium ${
             current === link.href
-              ? "bg-slate-900 text-white"
-              : "text-slate-600 hover:bg-slate-100"
+              ? "bg-accent text-accent-foreground"
+              : "text-foreground/60 hover:bg-surface/5"
           }`}
         >
           {link.label}

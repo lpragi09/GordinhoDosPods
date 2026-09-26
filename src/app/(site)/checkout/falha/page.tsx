@@ -11,10 +11,10 @@ export default async function CheckoutFailurePage({
   return (
     <div className="mx-auto max-w-md px-4 py-16 text-center">
       <XCircle className="mx-auto mb-4 text-red-500" size={56} />
-      <h1 className="mb-2 text-2xl font-bold text-slate-900">
+      <h1 className="mb-2 text-2xl font-bold text-foreground">
         Pagamento não aprovado
       </h1>
-      <p className="mb-8 text-slate-600">
+      <p className="mb-8 text-foreground/60">
         Não conseguimos confirmar seu pagamento. Você pode tentar novamente ou
         escolher outra forma de pagamento.
       </p>
@@ -22,14 +22,14 @@ export default async function CheckoutFailurePage({
         {order && (
           <Link
             href={`/conta/pedidos/${order}`}
-            className="rounded-md border border-slate-300 px-6 py-3 font-semibold text-slate-700"
+            className="rounded-md border border-border px-6 py-3 font-semibold text-foreground/80"
           >
             Ver pedido
           </Link>
         )}
         <Link
           href="/carrinho"
-          className="rounded-md bg-slate-900 px-6 py-3 font-semibold text-white"
+          className="rounded-md bg-accent px-6 py-3 font-semibold text-accent-foreground"
         >
           Tentar novamente
         </Link>
